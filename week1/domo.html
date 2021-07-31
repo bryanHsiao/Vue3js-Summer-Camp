@@ -22,7 +22,7 @@
       <div class="container">
         <div class="my-3">
           <button type="button" class="btn btn-outline-primary">
-            ==切換大頭貼解析度==
+            =切換大頭貼解析度=
           </button>
           現在圖片解析度：
           <span>清晰</span>
@@ -34,16 +34,18 @@
                 <button
                   type="button"
                   class="btn btn-outline-danger rounded-pill"
-                  @click="item.favorite = true"
+                  @click="item.checked = !item.checked"
                 >
-                  <i class="bi bi-heart fs-5"></i>
+                  <i class="bi bi-heart fs-5" v-if="!item.checked"></i>
+                  <i class="bi bi-heart-fill fs-5" v-else></i>
                 </button>
               </div>
               <img :src="item.picture.large" class="card-img-top" />
               <div class="card-body">
                 <h5 class="card-title">
                   {{item.name.title}} {{item.name.first}} {{item.name.last}} (
-                  <span>👨</span> )
+                  <span v-if="item.gender==='male'">👨</span
+                  ><span v-else>👩</span> )
                 </h5>
                 <p class="card-text">
                   Email：<a :href="`mailto:${item.email}`">{{item.email}}</a>
